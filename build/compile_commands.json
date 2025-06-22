@@ -1,0 +1,20 @@
+[
+{
+  "directory": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/MyCppProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MyCppProject.dir\\src\\main.cpp.obj -c \"C:\\Users\\lenovo\\OneDrive - Asia Pacific University\\Desktop\\fourth sem\\Data Strcture and algothim code\\C++ source code\\my-cpp-project\\src\\main.cpp\"",
+  "file": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/src/main.cpp",
+  "output": "CMakeFiles/MyCppProject.dir/src/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/MyCppProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MyCppProject.dir\\src\\ArrayBasedCollection.cpp.obj -c \"C:\\Users\\lenovo\\OneDrive - Asia Pacific University\\Desktop\\fourth sem\\Data Strcture and algothim code\\C++ source code\\my-cpp-project\\src\\ArrayBasedCollection.cpp\"",
+  "file": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/src/ArrayBasedCollection.cpp",
+  "output": "CMakeFiles/MyCppProject.dir/src/ArrayBasedCollection.cpp.obj"
+},
+{
+  "directory": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/MyCppProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MyCppProject.dir\\src\\LinkedListBasedCollection.cpp.obj -c \"C:\\Users\\lenovo\\OneDrive - Asia Pacific University\\Desktop\\fourth sem\\Data Strcture and algothim code\\C++ source code\\my-cpp-project\\src\\LinkedListBasedCollection.cpp\"",
+  "file": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/src/LinkedListBasedCollection.cpp",
+  "output": "CMakeFiles/MyCppProject.dir/src/LinkedListBasedCollection.cpp.obj"
+}
+]
