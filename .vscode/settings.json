@@ -1,3 +1,6 @@
 {
-    "cmake.sourceDirectory": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project"
+    "cmake.sourceDirectory": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project",
+    "files.associations": {
+        "iostream": "cpp"
+    }
 }
