@@ -1,6 +1,10 @@
 #include <iostream>
 #include <chrono> // For measuring performance
 #include <limits> // For numeric_limits
+#include <string> // For string operations
+#include "LinkedListBasedCollection.hpp" // Include your linked list collection header
+#include "ArrayBasedCollection.hpp" // Include your array-based collection header
+#include <algorithm> // For sorting
 using namespace std;
 
 enum DataStructureType
@@ -135,12 +139,12 @@ int main()
             {
                 if (dsType == ARRAY)
                 {
-                    // exportToJson(lastResultArray, "array_output.json"); // Placeholder
+                    // exportToJson(lastResultArray, "array_output.json"); 
                     cout << "Result exported to json format\n";
                 }
                 else
                 {
-                    // exportToJsonFromList(lastResultList, "list_output.json"); // Placeholder
+                    // exportToJsonFromList(lastResultList, "list_output.json"); 
                     cout << "Result exported to json format\n";
                 }
             }
