@@ -1,10 +1,14 @@
 #include <iostream>
-#include <chrono> // For measuring performance
-#include <limits> // For numeric_limits
-#include <string> // For string operations
+#include <chrono>                        // For measuring performance
+#include <limits>                        // For numeric_limits
+#include <string>   
+
+// Include header files
 #include "LinkedListBasedCollection.hpp" // Include your linked list collection header
-#include "ArrayBasedCollection.hpp" // Include your array-based collection header
-#include <algorithm> // For sorting
+#include "ArrayBasedCollection.hpp"      // Include your array-based collection header
+#include "Transaction.hpp"               // Transaction class header
+             
+
 using namespace std;
 
 enum DataStructureType
@@ -22,9 +26,16 @@ void sortByLocationList();
 void groupByPaymentChannelArray();
 void groupByPaymentChannelList();
  */
+// void showAvailableTransactionTypes(); // Function to display available transaction types
+
+// Path to the CSV data file
+string filePath = "financial_fraud_detection_dataset.csv";
+
 // ========== Main Program ==========
 int main()
 {
+    // Create instances of collections
+    
     while (true) // Outer loop for the whole program
     {
         int dsChoice, actionChoice;
@@ -71,82 +82,51 @@ int main()
         // Loop main menu
         while (true)
         {
-            cout << "\n========== Main Menu ==========\n";
-            cout << "1. Search by Transaction Type\n";
-            cout << "2. Sort by Location (Ascending)\n";
-            cout << "3. Exit to Data Structure Selection\n";
+            cout << "\n========== Searching by  Transaction Type ==========\n";
+            // Call a function to show available transaction types
+            // showAvailableTransactionTypes(); // <-- Add this function to display types
+            cout << "5- Exit\n";
             cout << "Enter your choice: ";
-            cin >> actionChoice;
-
-            if (actionChoice == 3)
+            int transactionChoice;
+            cin >> transactionChoice;
+            if (transactionChoice == 5)
             {
-                // Break out of the main menu loop and return to data structure selection
-                break;
+                break; // Back to data structure selection
             }
+            // TODO: Call searchByTransactionTypeArray/List based on dsType and transactionChoice
+            // searchByTransactionTypeArray(transactionChoice);
+            // searchByTransactionTypeList(transactionChoice);
 
-            auto start = chrono::high_resolution_clock::now();
+            cout << "\n========== Sorting Options ==========\n";
+            cout << "1. Sort by Location\n";
+            cout << "2. Sort by Payment Channel\n";
+            cout << "3. No Sorting\n";
+            cout << "Enter your choice: ";
+            int sortChoice;
+            cin >> sortChoice;
+            // TODO: Call sortByLocationArray/List or groupByPaymentChannelArray/List based on dsType and sortChoice
+            // sortByLocationArray();
+            // sortByLocationList();
+            // groupByPaymentChannelArray();
+            // groupByPaymentChannelList();
 
-            switch (actionChoice)
-            {
-            case 1:
-                if (dsType == ARRAY)
-                {
-                    // TODO: Implement search by type using Array
-                    // searchByTransactionTypeArray();
-                    // TODO: Automatically group by payment channel (Array)
-                    // groupByPaymentChannelArray();
-                }
-                else
-                {
-                    // TODO: Implement search by type using Linked List
-                    // searchByTransactionTypeList();
-                    // TODO: Automatically group by payment channel (List)
-                    // groupByPaymentChannelList();
-                }
-                break;
-            case 2:
-                if (dsType == ARRAY)
-                {
-                    // TODO: Implement sort by location using Array
-                    // sortByLocationArray();
-                    // TODO: Automatically group by payment channel (Array)
-                    // groupByPaymentChannelArray();
-                }
-                else
-                {
-                    // TODO: Implement sort by location using Linked List
-                    // sortByLocationList();
-                    // TODO: Automatically group by payment channel (List)
-                    // groupByPaymentChannelList();
-                }
-                break;
-            default:
-                cout << " Invalid menu option. Please choose 1, 2, or 3.\n";
-                continue; // Loop again without timing
-            }
+            // Show top 10 results (placeholder)
+            cout << "\nShowing top 10 transactions grouped by payment channel, location or no sorting (show top 10 by location)\n";
+            // TODO: Display top 10 results here
 
-            // Show result here (placeholder)
-            /*  cout << "\nOperation completed. (Show results here)\n";
-             auto end = chrono::high_resolution_clock::now();
-             auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
-             cout << "Time taken: " << duration.count() << " milliseconds\n"; */
+            // Show time and memory efficiency (placeholder)
+            cout << "\nTime taken: ... milliseconds\n";
+            cout << "Memory used: ... KB\n";
 
             // Ask if user wants to export to JSON
             char exportChoice;
-            cout << "\nDo you want to export the result to JSON? (y/n): ";
+            cout << "\nDo you want to export to JSON? (y/n): ";
             cin >> exportChoice;
             if (exportChoice == 'y' || exportChoice == 'Y')
             {
-                if (dsType == ARRAY)
-                {
-                    // exportToJson(lastResultArray, "array_output.json"); 
-                    cout << "Result exported to json format\n";
-                }
-                else
-                {
-                    // exportToJsonFromList(lastResultList, "list_output.json"); 
-                    cout << "Result exported to json format\n";
-                }
+                // TODO: Call exportToJson function
+                // exportToJson(...);
+                cout << "Result exported to json format\n";
             }
 
             // Ask if user wants to exit or go back to the very beginning

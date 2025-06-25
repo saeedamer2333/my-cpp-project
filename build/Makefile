@@ -152,6 +152,30 @@ src/ArrayBasedCollection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyCppProject.dir\build.make CMakeFiles/MyCppProject.dir/src/ArrayBasedCollection.cpp.s
 .PHONY : src/ArrayBasedCollection.cpp.s
 
+src/CSVParser.obj: src/CSVParser.cpp.obj
+.PHONY : src/CSVParser.obj
+
+# target to build an object file
+src/CSVParser.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyCppProject.dir\build.make CMakeFiles/MyCppProject.dir/src/CSVParser.cpp.obj
+.PHONY : src/CSVParser.cpp.obj
+
+src/CSVParser.i: src/CSVParser.cpp.i
+.PHONY : src/CSVParser.i
+
+# target to preprocess a source file
+src/CSVParser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyCppProject.dir\build.make CMakeFiles/MyCppProject.dir/src/CSVParser.cpp.i
+.PHONY : src/CSVParser.cpp.i
+
+src/CSVParser.s: src/CSVParser.cpp.s
+.PHONY : src/CSVParser.s
+
+# target to generate assembly for a file
+src/CSVParser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyCppProject.dir\build.make CMakeFiles/MyCppProject.dir/src/CSVParser.cpp.s
+.PHONY : src/CSVParser.cpp.s
+
 src/LinkedListBasedCollection.obj: src/LinkedListBasedCollection.cpp.obj
 .PHONY : src/LinkedListBasedCollection.obj
 
@@ -212,6 +236,9 @@ help:
 	@echo ... src/ArrayBasedCollection.obj
 	@echo ... src/ArrayBasedCollection.i
 	@echo ... src/ArrayBasedCollection.s
+	@echo ... src/CSVParser.obj
+	@echo ... src/CSVParser.i
+	@echo ... src/CSVParser.s
 	@echo ... src/LinkedListBasedCollection.obj
 	@echo ... src/LinkedListBasedCollection.i
 	@echo ... src/LinkedListBasedCollection.s

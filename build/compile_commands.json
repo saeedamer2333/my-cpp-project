@@ -16,5 +16,11 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/MyCppProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MyCppProject.dir\\src\\LinkedListBasedCollection.cpp.obj -c \"C:\\Users\\lenovo\\OneDrive - Asia Pacific University\\Desktop\\fourth sem\\Data Strcture and algothim code\\C++ source code\\my-cpp-project\\src\\LinkedListBasedCollection.cpp\"",
   "file": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/src/LinkedListBasedCollection.cpp",
   "output": "CMakeFiles/MyCppProject.dir/src/LinkedListBasedCollection.cpp.obj"
+},
+{
+  "directory": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/MyCppProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\MyCppProject.dir\\src\\CSVParser.cpp.obj -c \"C:\\Users\\lenovo\\OneDrive - Asia Pacific University\\Desktop\\fourth sem\\Data Strcture and algothim code\\C++ source code\\my-cpp-project\\src\\CSVParser.cpp\"",
+  "file": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/src/CSVParser.cpp",
+  "output": "CMakeFiles/MyCppProject.dir/src/CSVParser.cpp.obj"
 }
 ]

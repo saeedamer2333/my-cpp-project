@@ -10,5 +10,6 @@ add_executable(MyCppProject
     src/main.cpp
     src/ArrayBasedCollection.cpp
     src/LinkedListBasedCollection.cpp
+    src/CSVParser.cpp
     # Add more .cpp files here as needed
 )
