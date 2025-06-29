@@ -56,7 +56,7 @@ public:
             }
 
             // Only add if we captured the required fields
-            if (!transaction_id.empty() && ! transaction_type.empty()) {
+            if ( ! transaction_id.empty() && ! sender_account.empty() && ! receiver_account.empty() && amount > 0 && is_fraud != 'FALSE' && ! transaction_type.empty() && ! location.empty() && ! payment_channel.empty()) {
                 // Update the arguments below to match the Transaction constructor in Transaction.hpp
                 Transaction t(transaction_id, sender_account, receiver_account, amount,
                               transaction_type, location, payment_channel, is_fraud);
