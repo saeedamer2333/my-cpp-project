@@ -1,9 +1,54 @@
 {
     "tasks": [
         {
+            "type": "shell",
+            "label": "CMake: Configure",
+            "command": "cmake",
+            "args": [
+                "-S",
+                ".",
+                "-B",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "detail": "Configure CMake project"
+        },
+        {
+            "type": "shell",
+            "label": "CMake: Build Project",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Build using CMake",
+            "dependsOn": "CMake: Configure"
+        },
+        {
+            "type": "shell",
+            "label": "Run Program",
+            "command": "${workspaceFolder}/build/MyCppProject.exe",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "test",
+            "detail": "Run the compiled program",
+            "dependsOn": "CMake: Build Project"
+        },
+        {
             "type": "cppbuild",
-            "label": "C/C++: g++.exe build active file",
-            "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+            "label": "C/C++: main.cpp build active file",
+            "command": "c:\\Users\\lenovo\\OneDrive - Asia Pacific University\\Desktop\\fourth sem\\Data Strcture and algothim code\\C++ source code\\my-cpp-project\\src\\main.cpp",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
@@ -12,7 +57,7 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "c:\\Users\\lenovo\\OneDrive - Asia Pacific University\\Desktop\\fourth sem\\Data Strcture and algothim code\\C++ source code\\my-cpp-project\\src"
             },
             "problemMatcher": [
                 "$gcc"

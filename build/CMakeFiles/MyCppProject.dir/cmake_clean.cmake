@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/MyCppProject.dir/src/CSVParser.cpp.obj.d"
   "CMakeFiles/MyCppProject.dir/src/LinkedListBasedCollection.cpp.obj"
   "CMakeFiles/MyCppProject.dir/src/LinkedListBasedCollection.cpp.obj.d"
+  "CMakeFiles/MyCppProject.dir/src/Transaction.cpp.obj"
+  "CMakeFiles/MyCppProject.dir/src/Transaction.cpp.obj.d"
   "CMakeFiles/MyCppProject.dir/src/main.cpp.obj"
   "CMakeFiles/MyCppProject.dir/src/main.cpp.obj.d"
   "MyCppProject.exe"

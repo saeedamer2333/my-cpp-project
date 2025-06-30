@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TRANSACTION_HPP
+#define TRANSACTION_HPP
+
 #include <string>
 #include <iostream>
 using namespace std;
@@ -7,38 +9,39 @@ class Transaction
 {
 private:
     string transactionID;
-    string customerID;
-    string transactionType;
+    string senderAccount;
+    string receiverAccount;
     double amount;
-    string timestamp;
+    string transactionType;
     string location;
     string paymentChannel;
     bool isFraud;
+    int transactionNumber;
 
 public:
-    // Constructor with all parameters
+    // Constructor declaration
     Transaction(const string &transactionID,
-                const string &customerID,
-                const string &transactionType,
+                const string &senderAccount,
+                const string &receiverAccount,
                 double amount,
-                const string &timestamp,
+                const string &transactionType,
                 const string &location,
                 const string &paymentChannel,
                 bool isFraud);
+    Transaction() = default; // Default constructor
 
-    // Getter methods
     string getTransactionID() const;
-    string getCustomerID() const;
-    string getTransactionType() const;
+    string getSenderAccount() const;
+    string getReceiverAccount() const;
     double getAmount() const;
-    string getTimestamp() const;
+    string getTransactionType() const;
     string getLocation() const;
     string getPaymentChannel() const;
     bool getIsFraud() const;
+    // show all avalibe Transaction types
+    static void showUniqueTransactionTypes(Transaction arr[], int numTransactions) ;
+    
 
-    // Display transaction details
-    void display() const;
-
-    // Comparison operator for sorting by location
-    bool operator<(const Transaction &other) const;
 };
+
+#endif

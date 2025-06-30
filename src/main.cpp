@@ -1,149 +1,79 @@
 #include <iostream>
-#include <chrono>                        // For measuring performance
-#include <limits>                        // For numeric_limits
-#include <string>   
+#include <chrono> // For measuring performance
+#include <limits> // For numeric_limits
+#include <string>
 
 // Include header files
-#include "LinkedListBasedCollection.hpp" // Include your linked list collection header
-#include "ArrayBasedCollection.hpp"      // Include your array-based collection header
-#include "Transaction.hpp"               // Transaction class header
-             
-
+// Include your linked list collection header
+#include "../include/ArrayBasedCollection.hpp"
+#include "../include/Transaction.hpp"
+#include "../include/CSVParser.hpp" // Add this line to include the CSVParser class header
 using namespace std;
 
-enum DataStructureType
-{
-    ARRAY,
-    LINKED_LIST
-}; // Enum to represent data structure types
-
-// ========== Function Prototypes ==========
-/*
-void searchByTransactionTypeArray();
-void searchByTransactionTypeList();
-void sortByLocationArray();
-void sortByLocationList();
-void groupByPaymentChannelArray();
-void groupByPaymentChannelList();
- */
-// void showAvailableTransactionTypes(); // Function to display available transaction types
-
-// Path to the CSV data file
-string filePath = "financial_fraud_detection_dataset.csv";
-
-// ========== Main Program ==========
 int main()
 {
-    // Create instances of collections
-    
-    while (true) // Outer loop for the whole program
-    {
-        int dsChoice, actionChoice;
-        DataStructureType dsType;
+    CSVParser csvparser;
+    Transaction transaction;
 
-        // Loop until valid data structure selected
-        while (true)
+    string filePath = "financial_fraud_detection_dataset.csv";
+
+    csvparser.loadCSV(filePath); // Load CSV data
+
+    /* Transaction transactions[] = {
+            Transaction("T001", "ACC001", "ACC002", 1500.0, "TRANSFER", "New York", "ONLINE", false),
+            Transaction("T002", "ACC003", "ACC004", 2500.0, "PAYMENT", "Los Angeles", "ATM", false),
+            Transaction("T003", "ACC005", "ACC006", 750.0, "TRANSFER", "Chicago", "BRANCH", false),
+            Transaction("T004", "ACC007", "ACC008", 3000.0, "WITHDRAWAL", "Miami", "ONLINE", true)
+        };
+        int numTransactions = 4; */
+    Transaction *transactions;
+    transactions = csvparser.getTransactions(); // Get transactions from CSV parser
+
+    if (transactions == nullptr)
+    {
+        cout << "No transactions found in the CSV file." << endl;
+        return 1; // Exit if no transactions are available
+    }
+
+    int numTransactions = csvparser.getNumTransactions();
+
+    while (true)
+    {
+        cout << "\n========== Searching by Transaction Type ==========\n";
+        Transaction::showUniqueTransactionTypes(transactions, numTransactions);
+        cout << "5- Exit\n";
+        cout << "Enter your choice: ";
+        string searchKey;
+        cin >> searchKey;
+
+        ArrayBasedCollection arrayCollection(searchKey, numTransactions, transactions);
+        arrayCollection.printGroupedByPaymentChannel(transactions, numTransactions, searchKey);
+        // Ask if user wants to export to JSON
+        char exportChoice;
+        cout << "\nDo you want to export to JSON? (y/n): ";
+        cin >> exportChoice;
+        if (exportChoice == 'y' || exportChoice == 'Y')
         {
-            cout << "======== Data Structure Selection ========\n";
-            cout << "1. Use Array-based implementation\n";
-            cout << "2. Use Linked List-based implementation\n";
-            cout << "3. Exit\n";
-            cout << "Enter your choice (1 or 2): ";
-            cin >> dsChoice;
-            if (cin.fail())
-            {
-                cin.clear();                                         // clear error state
-                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-                cout << "Invalid input. Please enter a number.\n";
-                continue;
-            }
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear any extra input
-            if (dsChoice == 1)
-            {
-                dsType = ARRAY;
-                break;
-            }
-            else if (dsChoice == 2)
-            {
-                dsType = LINKED_LIST;
-                break;
-            }
-            else if (dsChoice == 3)
-            {
-                cout << "Exiting program. Goodbye!\n";
-                return 0; // Exit the program
-            }
-            else
-            {
-                cout << "Invalid selection. Please choose 1 or 2.\n";
-            }
+            // TODO: Call exportToJson function
+            // exportToJson(...);
+            cout << "Result exported to json format\n";
         }
 
-        // Loop main menu
-        while (true)
+        // Ask if user wants to exit or go back to the very beginning
+        char exitChoice;
+        cout << "\nDo you want to exit the program? (y/n): ";
+        cin >> exitChoice;
+        if (exitChoice == 'y' || exitChoice == 'Y')
         {
-            cout << "\n========== Searching by  Transaction Type ==========\n";
-            // Call a function to show available transaction types
-            // showAvailableTransactionTypes(); // <-- Add this function to display types
-            cout << "5- Exit\n";
-            cout << "Enter your choice: ";
-            int transactionChoice;
-            cin >> transactionChoice;
-            if (transactionChoice == 5)
-            {
-                break; // Back to data structure selection
-            }
-            // TODO: Call searchByTransactionTypeArray/List based on dsType and transactionChoice
-            // searchByTransactionTypeArray(transactionChoice);
-            // searchByTransactionTypeList(transactionChoice);
-
-            cout << "\n========== Sorting Options ==========\n";
-            cout << "1. Sort by Location\n";
-            cout << "2. Sort by Payment Channel\n";
-            cout << "3. No Sorting\n";
-            cout << "Enter your choice: ";
-            int sortChoice;
-            cin >> sortChoice;
-            // TODO: Call sortByLocationArray/List or groupByPaymentChannelArray/List based on dsType and sortChoice
-            // sortByLocationArray();
-            // sortByLocationList();
-            // groupByPaymentChannelArray();
-            // groupByPaymentChannelList();
-
-            // Show top 10 results (placeholder)
-            cout << "\nShowing top 10 transactions grouped by payment channel, location or no sorting (show top 10 by location)\n";
-            // TODO: Display top 10 results here
-
-            // Show time and memory efficiency (placeholder)
-            cout << "\nTime taken: ... milliseconds\n";
-            cout << "Memory used: ... KB\n";
-
-            // Ask if user wants to export to JSON
-            char exportChoice;
-            cout << "\nDo you want to export to JSON? (y/n): ";
-            cin >> exportChoice;
-            if (exportChoice == 'y' || exportChoice == 'Y')
-            {
-                // TODO: Call exportToJson function
-                // exportToJson(...);
-                cout << "Result exported to json format\n";
-            }
-
-            // Ask if user wants to exit or go back to the very beginning
-            char exitChoice;
-            cout << "\nDo you want to exit the program? (y/n): ";
-            cin >> exitChoice;
-            if (exitChoice == 'y' || exitChoice == 'Y')
-            {
-                cout << "Exiting program. Goodbye!\n";
-                return 0;
-            }
-            else
-            {
-                // Break out of the main menu loop and return to data structure selection
-                break;
-            }
+            cout << "Exiting program. Goodbye!\n";
+            return 0;
+        }
+        else
+        {
+            // Break out of the main menu loop and return to data structure selection
+            break;
         }
     }
+
     return 0;
 }
