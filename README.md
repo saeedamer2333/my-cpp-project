@@ -37,7 +37,3 @@ To build the project, follow these steps:
 ## Running the Application
 
 After building the project, you can run the application by executing the generated binary in the build directory.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
