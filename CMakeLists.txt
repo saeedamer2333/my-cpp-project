@@ -14,6 +14,7 @@ add_executable(MyCppProject
     src/LinkedListBasedCollection.cpp
     src/CSVParser.cpp
     src/Transaction.cpp
+    src/DataStructureComparator.cpp
 )
 
 # Set output directory

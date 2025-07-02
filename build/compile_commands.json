@@ -28,5 +28,11 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/MyCppProject.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\MyCppProject.dir\\src\\Transaction.cpp.obj -c \"C:\\Users\\lenovo\\OneDrive - Asia Pacific University\\Desktop\\fourth sem\\Data Strcture and algothim code\\C++ source code\\my-cpp-project\\src\\Transaction.cpp\"",
   "file": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/src/Transaction.cpp",
   "output": "CMakeFiles/MyCppProject.dir/src/Transaction.cpp.obj"
+},
+{
+  "directory": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/MyCppProject.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\MyCppProject.dir\\src\\DataStructureComparator.cpp.obj -c \"C:\\Users\\lenovo\\OneDrive - Asia Pacific University\\Desktop\\fourth sem\\Data Strcture and algothim code\\C++ source code\\my-cpp-project\\src\\DataStructureComparator.cpp\"",
+  "file": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project/src/DataStructureComparator.cpp",
+  "output": "CMakeFiles/MyCppProject.dir/src/DataStructureComparator.cpp.obj"
 }
 ]

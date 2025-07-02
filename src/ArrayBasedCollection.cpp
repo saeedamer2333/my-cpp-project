@@ -1,10 +1,12 @@
 #include <string>
 #include <iostream>
+#include <chrono>
 using namespace std;
 #include "../include/ArrayBasedCollection.hpp"
 
 ArrayBasedCollection::ArrayBasedCollection(string &searchKey, int numTransactions, Transaction *transactions)
-    : searchKey(searchKey), numTransactions(numTransactions), transactions(transactions)
+    : searchKey(searchKey), numTransactions(numTransactions), transactions(transactions), 
+      searchTime(chrono::milliseconds::zero()), sortTime(chrono::milliseconds::zero())
 {
     // Constructor body (if needed)
 }
@@ -18,10 +20,18 @@ void ArrayBasedCollection::printGroupedByPaymentChannel(Transaction arr[], int n
 {
     if (numTransactions == 0)
         return;
-    // Sort transactions by Payment Channel
+
+    // Track sorting time for payment channel
+    auto sortStart = chrono::high_resolution_clock::now();
     mergeSortByPaymentChannel(arr, 0, numTransactions - 1);
+    auto sortEnd = chrono::high_resolution_clock::now();
+    auto channelSortTime = chrono::duration_cast<chrono::milliseconds>(sortEnd - sortStart);
 
     int i = 0;
+    int totalResults = 0;
+    chrono::milliseconds totalSearchTime = chrono::milliseconds::zero();
+    chrono::milliseconds totalAmountSortTime = chrono::milliseconds::zero();
+    
     while (i < numTransactions)
     {
         string currentChannel = arr[i].getPaymentChannel();
@@ -33,14 +43,20 @@ void ArrayBasedCollection::printGroupedByPaymentChannel(Transaction arr[], int n
             j++;
         }
 
-        // Search by transaction type using the new method
+        // Search by transaction type using the new method with timing
         Transaction *group = new Transaction[j - i];
+        auto searchStart = chrono::high_resolution_clock::now();
         int groupSize = searchbyTransactionType(arr, i, j, searchKey, group);
+        auto searchEndTime = chrono::high_resolution_clock::now();
+        totalSearchTime += chrono::duration_cast<chrono::milliseconds>(searchEndTime - searchStart);
 
         // Sort this group by amount (highest first), then by location (alphabetically)
         if (groupSize > 0)
         {
+            auto amountSortStart = chrono::high_resolution_clock::now();
             mergeSortByAmountThenLocation(group, 0, groupSize - 1);
+            auto amountSortEnd = chrono::high_resolution_clock::now();
+            totalAmountSortTime += chrono::duration_cast<chrono::milliseconds>(amountSortEnd - amountSortStart);
 
             // Print payment channel header with column names
             cout << "\n========================================" << endl;
@@ -50,7 +66,8 @@ void ArrayBasedCollection::printGroupedByPaymentChannel(Transaction arr[], int n
             cout << "--------------------------------------------------------------------------------------------------------" << endl;
 
             // Print top 10 transactions with formatted columns
-            for (int k = 0; k < groupSize && k < 10; ++k)
+            int displayCount = min(groupSize, 10);
+            for (int k = 0; k < displayCount; ++k)
             {
                 cout << group[k].getTransactionID() << " | "
                      << group[k].getSenderAccount() << " | "
@@ -58,14 +75,18 @@ void ArrayBasedCollection::printGroupedByPaymentChannel(Transaction arr[], int n
                      << group[k].getAmount() << " | "
                      << group[k].getTransactionType() << " | "
                      << group[k].getLocation() << " | "
-                     << (group[k].getIsFraud() ? "Fraud" : "Not Fraud")
-                     << endl;
+                     << (group[k].getIsFraud() ? "Fraud" : "Not Fraud") << endl;
             }
+            totalResults += displayCount;
         }
 
         delete[] group;
         i = j;
     }
+
+    // Store total timing metrics
+    searchTime = totalSearchTime;
+    sortTime = channelSortTime + totalAmountSortTime;
 }
 
 int ArrayBasedCollection::searchbyTransactionType(Transaction arr[], int start, int end, string &searchKey, Transaction *group)

@@ -176,6 +176,30 @@ src/CSVParser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyCppProject.dir\build.make CMakeFiles/MyCppProject.dir/src/CSVParser.cpp.s
 .PHONY : src/CSVParser.cpp.s
 
+src/DataStructureComparator.obj: src/DataStructureComparator.cpp.obj
+.PHONY : src/DataStructureComparator.obj
+
+# target to build an object file
+src/DataStructureComparator.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyCppProject.dir\build.make CMakeFiles/MyCppProject.dir/src/DataStructureComparator.cpp.obj
+.PHONY : src/DataStructureComparator.cpp.obj
+
+src/DataStructureComparator.i: src/DataStructureComparator.cpp.i
+.PHONY : src/DataStructureComparator.i
+
+# target to preprocess a source file
+src/DataStructureComparator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyCppProject.dir\build.make CMakeFiles/MyCppProject.dir/src/DataStructureComparator.cpp.i
+.PHONY : src/DataStructureComparator.cpp.i
+
+src/DataStructureComparator.s: src/DataStructureComparator.cpp.s
+.PHONY : src/DataStructureComparator.s
+
+# target to generate assembly for a file
+src/DataStructureComparator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyCppProject.dir\build.make CMakeFiles/MyCppProject.dir/src/DataStructureComparator.cpp.s
+.PHONY : src/DataStructureComparator.cpp.s
+
 src/LinkedListBasedCollection.obj: src/LinkedListBasedCollection.cpp.obj
 .PHONY : src/LinkedListBasedCollection.obj
 
@@ -263,6 +287,9 @@ help:
 	@echo ... src/CSVParser.obj
 	@echo ... src/CSVParser.i
 	@echo ... src/CSVParser.s
+	@echo ... src/DataStructureComparator.obj
+	@echo ... src/DataStructureComparator.i
+	@echo ... src/DataStructureComparator.s
 	@echo ... src/LinkedListBasedCollection.obj
 	@echo ... src/LinkedListBasedCollection.i
 	@echo ... src/LinkedListBasedCollection.s
