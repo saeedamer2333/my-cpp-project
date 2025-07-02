@@ -24,6 +24,20 @@ Transaction::Transaction(const string &transactionID,
 }
 
 // Getter implementations
+#include "json.hpp" // For nlohmann::json
+
+nlohmann::json Transaction::to_json() const {
+    nlohmann::json j;
+    j["transactionID"] = transactionID;
+    j["senderAccount"] = senderAccount;
+    j["receiverAccount"] = receiverAccount;
+    j["amount"] = amount;
+    j["transactionType"] = transactionType;
+    j["location"] = location;
+    j["paymentChannel"] = paymentChannel;
+    j["isFraud"] = isFraud;
+    return j;
+}
 string Transaction::getTransactionID() const {
     return transactionID;
 }

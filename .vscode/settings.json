@@ -1,5 +1,5 @@
 {
-    "cmake.sourceDirectory": "C:/Users/lenovo/OneDrive - Asia Pacific University/Desktop/fourth sem/Data Strcture and algothim code/C++ source code/my-cpp-project",
+    "cmake.sourceDirectory": "/wsl.localhost/Ubuntu-20.04/home/lucien/projects/my-cpp-project",
     "files.associations": {
         "iostream": "cpp",
         "limits": "cpp",

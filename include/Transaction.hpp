@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include "json.hpp"
 using namespace std;
 
 class Transaction
@@ -40,6 +41,7 @@ public:
     bool getIsFraud() const;
     // show all avalibe Transaction types
     static void showUniqueTransactionTypes(Transaction arr[], int numTransactions) ;
+    nlohmann::json to_json() const;
     
 
 };

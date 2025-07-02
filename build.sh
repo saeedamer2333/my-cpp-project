@@ -20,7 +20,9 @@ g++ -I include -std=c++17 \
 
 if [ $? -eq 0 ]; then
     echo "Build successful! Executable created at build/MyCppProject.exe"
-    echo "Run with: ./build/MyCppProject.exe"
+    echo "Running program..."
+    echo
+    ./build/MyCppProject.exe
 else
     echo "Build failed!"
     exit 1

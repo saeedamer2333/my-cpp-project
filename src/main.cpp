@@ -2,6 +2,7 @@
 #include <chrono> // For measuring performance
 #include <limits> // For numeric_limits
 #include <string>
+#include "json.hpp"
 
 // Include header files
 #include "../include/DataStructureComparator.hpp"
@@ -12,7 +13,7 @@ using namespace std;
 int main()
 {
     CSVParser csvparser;
-    string filePath = "financial_fraud_detection_dataset.csv";
+    string filePath = "C:/Users/user/Downloads/projects/my-cpp-project/financial_fraud_detection_dataset.csv";
     csvparser.setFilePath(filePath);
 
     // Prompt for search key ONCE
@@ -36,15 +37,24 @@ int main()
         return 0;
     }
     DataStructureComparator pageComparator(transactions, numTransactions, searchKey);
-    pageComparator.performComparison(); // Perform comparison for the first page    
+    pageComparator.performComparison(); // Perform comparison for the first page
 
-
-     /*     // false = don't print summary yet
-        (pageComparator); // You need to implement accumulate()
- */
-/*     // Show the final summary ONCE
-    cout << "\n===== FINAL PERFORMANCE COMPARISON FOR ALL DATA (" <<  << " pages) =====" << endl;
-   
-    cout << "All data processed. Program finished." << endl; */
+    // Ask user if they want to export the top 10 results as JSON
+    char exportChoice;
+    cout << "\nWould you like to export the top 10 results as JSON? (y/n): ";
+    cin >> exportChoice;
+    if (exportChoice == 'y' || exportChoice == 'Y') {
+        cout << "\nExporting top 10 results to exports/top10_results.json..." << endl;
+        system("mkdir exports >nul 2>nul"); // Create folder if it doesn't exist (Windows)
+        nlohmann::json jarray = nlohmann::json::array();
+        int exportCount = (numTransactions < 10) ? numTransactions : 10;
+        for (int i = 0; i < exportCount; ++i) {
+            jarray.push_back(transactions[i].to_json());
+        }
+        std::ofstream outFile("exports/top10_results.json");
+        outFile << jarray.dump(4);
+        outFile.close();
+        cout << "Top 10 results exported to exports/top10_results.json" << endl;
+    }
     return 0;
 }
