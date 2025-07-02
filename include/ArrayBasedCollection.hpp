@@ -28,8 +28,9 @@ public:
     ~ArrayBasedCollection();
 
     void printGroupedByPaymentChannel(Transaction arr[], int numTransactions, string &searchKey);
-    
-    
+
+    void processSilently(Transaction arr[], int numTransactions, string &searchKey);
+
     // Getters for performance metrics
     chrono::milliseconds getSearchTime() const { return searchTime; }
     chrono::milliseconds getSortTime() const { return sortTime; }

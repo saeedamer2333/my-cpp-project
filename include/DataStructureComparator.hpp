@@ -15,10 +15,10 @@ private:
     
     // Performance metrics
     struct PerformanceMetrics {
-        chrono::milliseconds creationTime;
-        chrono::milliseconds sortingTime;
-        chrono::milliseconds processingTime;
-        chrono::milliseconds totalTime;
+        chrono::microseconds creationTime;
+        chrono::microseconds sortingTime;
+        chrono::microseconds processingTime;
+        chrono::microseconds totalTime;
         size_t memoryUsage;
         int resultsDisplayed;
         int channelsProcessed;
@@ -32,16 +32,30 @@ public:
     ~DataStructureComparator();
     
     // Main comparison function
-    void performComparison();
     
+
+    void processLinkedListStructureSilent();
+
+      void displayFinalSummary();
+      void processArrayStructureSilent();
+
+        void setLinkedListTime(long long timeInMicroseconds) {
+        linkedListMetrics.totalTime = chrono::microseconds(timeInMicroseconds);
+    }
+    
+    void setArrayTime(long long timeInMicroseconds) {
+        arrayMetrics.totalTime = chrono::microseconds(timeInMicroseconds);
+    }
+
 private:
     // Helper methods
-    void displayInitialComparison();
-    void processArrayStructure();
-    void processLinkedListStructureSilent();
-    void displayCreationComparison();
-    void displayFinalSummary();
+       
+    
+
+    
+   
+  
     void calculateMemoryUsage();
-    void displayPerformanceInsights();
+
     
 };

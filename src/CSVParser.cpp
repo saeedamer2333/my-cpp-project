@@ -1,9 +1,9 @@
 #include "../include/CSVParser.hpp"
 #include <filesystem>
 
-const int PAGE_SIZE = 500000; // You can adjust this as needed
+const int PAGE_SIZE = 1000; // Much smaller page size for low memory usage
 
-CSVParser::CSVParser() : numTransactions(0), transactions(nullptr), filePath(""), pageCounter(0) {}
+CSVParser::CSVParser() : numTransactions(0), transactions(nullptr), filePath(""), pageCounter(0), isStreamMode(false), totalProcessed(0) {}
 
 CSVParser::~CSVParser()
 {
@@ -12,6 +12,7 @@ CSVParser::~CSVParser()
         delete[] transactions;
         transactions = nullptr;
     }
+    closeStream();
 }
 
 void CSVParser::setFilePath(const string &path)
@@ -91,7 +92,7 @@ bool CSVParser::loadNextPage()
         cout << "No more data to load." << endl;
         return false;
     }
-    cout << "Loaded page " << pageCounter << " with " << numTransactions << " transactions." << endl;
+  
     return true;
 }
 
@@ -231,4 +232,83 @@ bool CSVParser::parseLine(const string &line, string &transaction_id, string &se
 {
     return parseLineWithValidation(line, transaction_id, sender_account, receiver_account,
                                    amount, transaction_type, location, payment_channel, is_fraud) == ParseResult::SUCCESS;
+}
+
+// Streaming methods for low memory usage
+bool CSVParser::initializeStreaming()
+{
+    if (filePath.empty())
+    {
+        cerr << "ERROR: No file path set for streaming." << endl;
+        return false;
+    }
+
+    fileStream.open(filePath);
+    if (!fileStream.is_open())
+    {
+        cerr << "ERROR: Cannot open file for streaming: " << filePath << endl;
+        return false;
+    }
+
+    // Skip header line
+    string headerLine;
+    if (!getline(fileStream, headerLine))
+    {
+        cerr << "ERROR: Cannot read header line for streaming" << endl;
+        return false;
+    }
+
+    isStreamMode = true;
+    totalProcessed = 0;
+    cout << "Might Take Seconds To Process Please Wait" << endl;
+    return true;
+}
+
+bool CSVParser::getNextTransaction(Transaction &transaction)
+{
+    if (!isStreamMode || !fileStream.is_open())
+    {
+        return false;
+    }
+
+    string line;
+    while (getline(fileStream, line))
+    {
+        if (line.empty() || line.length() < 10)
+            continue;
+
+        string transaction_id, sender_account, receiver_account;
+        string transaction_type, location, payment_channel;
+        double amount;
+        bool is_fraud;
+
+        ParseResult result = parseLineWithValidation(line, transaction_id, sender_account,
+                                                     receiver_account, amount, transaction_type,
+                                                     location, payment_channel, is_fraud);
+
+        if (result == ParseResult::SUCCESS)
+        {
+            transaction = Transaction(transaction_id, sender_account, receiver_account,
+                                      amount, transaction_type, location, payment_channel, is_fraud);
+            totalProcessed++;
+            return true;
+        }
+    }
+
+    return false; // End of file or no more valid transactions
+}
+
+void CSVParser::closeStream()
+{
+    if (fileStream.is_open())
+    {
+        fileStream.close();
+    }
+    isStreamMode = false;
+    cout << "Streaming mode closed. Total processed: " << totalProcessed << endl;
+}
+
+long long CSVParser::getTotalProcessed() const
+{
+    return totalProcessed;
 }

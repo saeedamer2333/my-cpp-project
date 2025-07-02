@@ -42,7 +42,7 @@ public:
 
     LinkedListBasedCollection(string &searchKey, int numTransactions, Transaction *transactions);
     ~LinkedListBasedCollection();
-    void printGroupedByPaymentChannel(string &searchKey);
+
     void processSilently(string &searchKey);  // Process without printing
     
     // Getters for performance metrics
