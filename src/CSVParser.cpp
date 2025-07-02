@@ -1,7 +1,7 @@
 #include "../include/CSVParser.hpp"
 #include <filesystem>
 
-const int PAGE_SIZE = 50000; // You can adjust this as needed
+const int PAGE_SIZE = 500000; // You can adjust this as needed
 
 CSVParser::CSVParser() : numTransactions(0), transactions(nullptr), filePath(""), pageCounter(0) {}
 
@@ -95,8 +95,8 @@ bool CSVParser::loadNextPage()
     return true;
 }
 
-int CSVParser::getNumTransactions()  { return numTransactions; }
-Transaction *CSVParser::getTransactions()  { return transactions; }
+int CSVParser::getNumTransactions() { return numTransactions; }
+Transaction *CSVParser::getTransactions() { return transactions; }
 
 // Enhanced helper method to parse a single CSV line with detailed validation
 CSVParser::ParseResult CSVParser::parseLineWithValidation(const string &line, string &transaction_id,

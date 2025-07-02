@@ -25,7 +25,7 @@ int main()
         return 1;
     }
     Transaction *transactions = csvparser.getTransactions();
-    int numTransactions = 10000; // Default to 10,000 for initial display
+    int numTransactions = csvparser.getNumTransactions(); // Use actual loaded page size
     Transaction::showUniqueTransactionTypes(transactions, numTransactions);
     cout << "5- Exit\n";
     cout << "Enter your choice: ";
@@ -39,6 +39,7 @@ int main()
     DataStructureComparator pageComparator(transactions, numTransactions, searchKey);
     pageComparator.performComparison(); // Perform comparison for the first page
 
+<<<<<<< Updated upstream
     // Ask user if they want to export the top 10 results as JSON
     char exportChoice;
     cout << "\nWould you like to export the top 10 results as JSON? (y/n): ";
@@ -57,4 +58,23 @@ int main()
         cout << "Top 10 results exported to exports/top10_results.json" << endl;
     }
     return 0;
+=======
+    cout << "Do u wanna to export as json file? (y/n)" << endl;
+    string exportChoice;
+    cin >> exportChoice;
+    if (exportChoice == "y")
+    {
+        // Call export function (not implemented in this snippet)
+        cout << "Exporting results to JSON file..." << endl;
+    }
+
+    cout << " do you wanna to exist? (y/n)" << endl;
+    string exitChoice;
+    cin >> exitChoice;
+    if (exitChoice == "y")
+    {
+        cout << "Exiting program. Goodbye!\n";
+        return 0;
+    }
+>>>>>>> Stashed changes
 }

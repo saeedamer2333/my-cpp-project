@@ -1,5 +1,6 @@
 #include "../include/DataStructureComparator.hpp"
 
+
 DataStructureComparator::DataStructureComparator(Transaction* transactions, int numTransactions, const string& searchKey)
     : transactions(transactions), numTransactions(numTransactions), searchKey(searchKey)
 {
