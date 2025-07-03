@@ -164,12 +164,10 @@ void handleSearch(CSVParser &csvparser, string &searchKey)
 
     // Set the detailed timing metrics
     finalComparator.setArrayTime(arrayTime);
-    finalComparator.setArraySearchTime(arrayCollection.getSearchTime().count());
-    finalComparator.setArraySortTime(arrayCollection.getSortTime().count());
+    finalComparator.setArraySearchTime(arrayCollection.getSearchTime().count() * 1000); // Convert ms to μs
+    finalComparator.setArraySortTime(arrayCollection.getSortTime().count() * 1000);     // Convert ms to μs
     cout << "Array processing completed." << endl;
 
-    // --- Linked List Performance (Simulated in batches) ---
-    cout << "\n--- Simulating Linked List Performance (in batches) ---" << endl;
     const int LL_BATCH_SIZE = 1000;
     long long totalLinkedListTime = 0;
     long long totalSearchTime = 0;
@@ -186,12 +184,15 @@ void handleSearch(CSVParser &csvparser, string &searchKey)
         LinkedListBasedCollection batchLinkedList(searchKey, currentBatchSize, batch_ptr);
         batchLinkedList.processSilently(searchKey);
 
-        auto llBatchEnd = chrono::high_resolution_clock::now();
-
-        // Accumulate all the timing metrics
+        auto llBatchEnd = chrono::high_resolution_clock::now(); // Accumulate all the timing metrics
         totalLinkedListTime += chrono::duration_cast<chrono::microseconds>(llBatchEnd - llBatchStart).count();
-        totalSearchTime += batchLinkedList.getSearchTime().count();
-        totalSortTime += batchLinkedList.getSortTime().count();
+
+        // Get timing directly in microseconds (no conversion needed)
+        long long batchSearchTime = batchLinkedList.getSearchTime().count();
+        long long batchSortTime = batchLinkedList.getSortTime().count();
+
+        totalSearchTime += batchSearchTime;
+        totalSortTime += batchSortTime;
     }
 
     // Set the accumulated times in the final comparator
@@ -200,10 +201,8 @@ void handleSearch(CSVParser &csvparser, string &searchKey)
     finalComparator.setLinkedListSortTime(totalSortTime);
     cout << "Linked List simulation completed." << endl;
 
-
     arrayCollection.printGroupedByPaymentChannel(allMatchingArray, matchingCount, searchKey);
 
-    
     // --- 4. Display Results ---
     cout << "\n========== Comparison Summary ==========" << endl;
     finalComparator.displayFinalSummary();

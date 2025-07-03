@@ -94,14 +94,14 @@ void ArrayBasedCollection::printGroupedByPaymentChannel(Transaction arr[], int n
     cout << "ARRAY PERFORMANCE SUMMARY" << endl;
     cout << "========================================" << endl;
     cout << "Processing Time:" << endl;
-    cout << "  • Sorting: " << (channelSortTime + totalAmountSortTime).count() << " ms" << endl;
-    cout << "  • Searching: " << totalSearchTime.count() << " ms" << endl;
-    cout << "  • Total: " << (channelSortTime + totalAmountSortTime + totalSearchTime).count() << " ms" << endl;
+    cout << "  Sorting: " << (channelSortTime + totalAmountSortTime).count() << " ms" << endl;
+    cout << "  Searching: " << totalSearchTime.count() << " ms" << endl;
+    cout << "  Total: " << (channelSortTime + totalAmountSortTime + totalSearchTime).count() << " ms" << endl;
     
     cout << "Memory Usage:" << endl;
     double memoryMB = (numTransactions * sizeof(Transaction)) / (1024.0 * 1024.0);
-    cout << "  • Dataset: " << memoryMB << " MB (" << numTransactions << " transactions)" << endl;
-    cout << "  • Results Displayed: " << totalResults << " transactions" << endl;
+    cout << "   Dataset: " << memoryMB << " MB (" << numTransactions << " transactions)" << endl;
+    cout << "   Results Displayed: " << totalResults << " transactions" << endl;
     cout << "========================================" << endl;
     
 }
