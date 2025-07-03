@@ -1,5 +1,24 @@
-
 # Ignore dataset
 financial_fraud_detection_dataset.csv
 
+# Ignore build directory and all contents
+build/
+build/*
 
+# Ignore VS Code settings
+.vscode/
+
+# Ignore compiled executables
+MyCppProject.exe
+*.exe
+
+# Ignore object files
+*.o
+*.obj
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore log files
+*.log
