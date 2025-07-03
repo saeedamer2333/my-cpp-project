@@ -7,14 +7,16 @@ using namespace std;
 #include "ArrayBasedCollection.hpp"
 #include "LinkedListBasedCollection.hpp"
 
-class DataStructureComparator {
+class DataStructureComparator
+{
 private:
-    Transaction* transactions;
+    Transaction *transactions;
     int numTransactions;
     string searchKey;
-    
+
     // Performance metrics
-    struct PerformanceMetrics {
+    struct PerformanceMetrics
+    {
         chrono::microseconds creationTime;
         chrono::microseconds sortingTime;
         chrono::microseconds processingTime;
@@ -23,39 +25,53 @@ private:
         int resultsDisplayed;
         int channelsProcessed;
     };
-    
+
     PerformanceMetrics arrayMetrics;
     PerformanceMetrics linkedListMetrics;
-    
+
 public:
-    DataStructureComparator(Transaction* transactions, int numTransactions, const string& searchKey);
+    DataStructureComparator(Transaction *transactions, int numTransactions, const string &searchKey);
     ~DataStructureComparator();
-    
+
     // Main comparison function
-    
 
     void processLinkedListStructureSilent();
 
-      void displayFinalSummary();
-      void processArrayStructureSilent();
+    void displayFinalSummary();
+    void processArrayStructureSilent();
 
-        void setLinkedListTime(long long timeInMicroseconds) {
+    void setLinkedListTime(long long timeInMicroseconds)
+    {
         linkedListMetrics.totalTime = chrono::microseconds(timeInMicroseconds);
     }
-    
-    void setArrayTime(long long timeInMicroseconds) {
+
+    void setArrayTime(long long timeInMicroseconds)
+    {
         arrayMetrics.totalTime = chrono::microseconds(timeInMicroseconds);
+    }
+
+    void setLinkedListSearchTime(long long timeInMicroseconds)
+    {
+        linkedListMetrics.processingTime = chrono::microseconds(timeInMicroseconds);
+    }
+
+    void setLinkedListSortTime(long long timeInMicroseconds)
+    {
+        linkedListMetrics.sortingTime = chrono::microseconds(timeInMicroseconds);
+    }
+
+    void setArraySearchTime(long long timeInMicroseconds)
+    {
+        arrayMetrics.processingTime = chrono::microseconds(timeInMicroseconds);
+    }
+
+    void setArraySortTime(long long timeInMicroseconds)
+    {
+        arrayMetrics.sortingTime = chrono::microseconds(timeInMicroseconds);
     }
 
 private:
     // Helper methods
-       
-    
 
-    
-   
-  
     void calculateMemoryUsage();
-
-    
 };

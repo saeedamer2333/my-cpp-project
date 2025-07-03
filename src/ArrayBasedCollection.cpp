@@ -31,7 +31,8 @@ void ArrayBasedCollection::printGroupedByPaymentChannel(Transaction arr[], int n
     int totalResults = 0;
     chrono::milliseconds totalSearchTime = chrono::milliseconds::zero();
     chrono::milliseconds totalAmountSortTime = chrono::milliseconds::zero();
-    
+    cout << "\n========================================" << endl;
+    cout << "Grouped Transactions by Payment Channel" << endl;
     while (i < numTransactions)
     {
         string currentChannel = arr[i].getPaymentChannel();
@@ -174,6 +175,7 @@ void ArrayBasedCollection::processSilently(Transaction arr[], int numTransaction
     searchTime = totalSearchTime;
     sortTime = channelSortTime + totalAmountSortTime;
 }
+// Helper function to translate internal type names to user-friendly names
 
 int ArrayBasedCollection::searchbyTransactionType(Transaction arr[], int start, int end, string &searchKey, Transaction *group)
 {

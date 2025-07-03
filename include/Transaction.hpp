@@ -40,7 +40,8 @@ public:
     string getPaymentChannel() const;
     bool getIsFraud() const;
     // show all avalibe Transaction types
-    static void showUniqueTransactionTypes(Transaction arr[], int numTransactions) ;
+     static string formatTransactionTypeForDisplay(const string& internalType);
+    static void showUniqueTransactionTypes(Transaction arr[], int numTransactions);
     nlohmann::json to_json() const;
     
 
