@@ -21,4 +21,4 @@ MyCppProject.exe
 *.temp
 
 # Ignore log files
-*.log
+*.logbuild/
