@@ -1,5 +1,5 @@
 CMakeFiles/MyCppProject.dir/src/ArrayBasedCollection.cpp.obj: \
- C:\Users\user\Downloads\projects\my-cpp-project\src\ArrayBasedCollection.cpp \
+ C:\Users\user\Downloads\projects\yaarb\my-cpp-project\src\ArrayBasedCollection.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/string \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -149,9 +149,9 @@ CMakeFiles/MyCppProject.dir/src/ArrayBasedCollection.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/limits \
  C:/msys64/ucrt64/include/c++/14.2.0/ctime \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/parse_numbers.h \
- C:/Users/user/Downloads/projects/my-cpp-project/include/ArrayBasedCollection.hpp \
- C:/Users/user/Downloads/projects/my-cpp-project/include/Transaction.hpp \
- C:/Users/user/Downloads/projects/my-cpp-project/include/json.hpp \
+ C:/Users/user/Downloads/projects/yaarb/my-cpp-project/include/ArrayBasedCollection.hpp \
+ C:/Users/user/Downloads/projects/yaarb/my-cpp-project/include/Transaction.hpp \
+ C:/Users/user/Downloads/projects/yaarb/my-cpp-project/include/json.hpp \
  C:/msys64/ucrt64/include/c++/14.2.0/algorithm \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_algo.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/algorithmfwd.h \

@@ -13,7 +13,7 @@ using namespace std;
 int main()
 {
     CSVParser csvparser;
-    string filePath = "C:/Users/user/Downloads/projects/my-cpp-project/financial_fraud_detection_dataset.csv";
+    string filePath = "../financial_fraud_detection_dataset.csv";
     csvparser.setFilePath(filePath);
 
     // Prompt for search key ONCE
