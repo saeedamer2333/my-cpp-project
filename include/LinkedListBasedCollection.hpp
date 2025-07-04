@@ -37,15 +37,15 @@ private:
 
 public:
     // Timing metrics for algorithm performance
-    chrono::milliseconds searchTime;
-    chrono::milliseconds sortTime;
+    chrono::microseconds searchTime;
+    chrono::microseconds sortTime;
 
     LinkedListBasedCollection(string &searchKey, int numTransactions, Transaction *transactions);
     ~LinkedListBasedCollection();
-    void printGroupedByPaymentChannel(string &searchKey);
+
     void processSilently(string &searchKey);  // Process without printing
     
     // Getters for performance metrics
-    chrono::milliseconds getSearchTime() const { return searchTime; }
-    chrono::milliseconds getSortTime() const { return sortTime; }
+    chrono::microseconds getSearchTime() const { return searchTime; }
+    chrono::microseconds getSortTime() const { return sortTime; }
 };

@@ -7,41 +7,71 @@ using namespace std;
 #include "ArrayBasedCollection.hpp"
 #include "LinkedListBasedCollection.hpp"
 
-class DataStructureComparator {
+class DataStructureComparator
+{
 private:
-    Transaction* transactions;
+    Transaction *transactions;
     int numTransactions;
     string searchKey;
-    
+
     // Performance metrics
-    struct PerformanceMetrics {
-        chrono::milliseconds creationTime;
-        chrono::milliseconds sortingTime;
-        chrono::milliseconds processingTime;
-        chrono::milliseconds totalTime;
+    struct PerformanceMetrics
+    {
+        chrono::microseconds creationTime;
+        chrono::microseconds sortingTime;
+        chrono::microseconds processingTime;
+        chrono::microseconds totalTime;
         size_t memoryUsage;
         int resultsDisplayed;
         int channelsProcessed;
     };
-    
+
     PerformanceMetrics arrayMetrics;
     PerformanceMetrics linkedListMetrics;
-    
+
 public:
-    DataStructureComparator(Transaction* transactions, int numTransactions, const string& searchKey);
+    DataStructureComparator(Transaction *transactions, int numTransactions, const string &searchKey);
     ~DataStructureComparator();
-    
+
     // Main comparison function
-    void performComparison();
-    
+
+    void processLinkedListStructureSilent();
+
+    void displayFinalSummary();
+    void processArrayStructureSilent();
+
+    void setLinkedListTime(long long timeInMicroseconds)
+    {
+        linkedListMetrics.totalTime = chrono::microseconds(timeInMicroseconds);
+    }
+
+    void setArrayTime(long long timeInMicroseconds)
+    {
+        arrayMetrics.totalTime = chrono::microseconds(timeInMicroseconds);
+    }
+
+    void setLinkedListSearchTime(long long timeInMicroseconds)
+    {
+        linkedListMetrics.processingTime = chrono::microseconds(timeInMicroseconds);
+    }
+
+    void setLinkedListSortTime(long long timeInMicroseconds)
+    {
+        linkedListMetrics.sortingTime = chrono::microseconds(timeInMicroseconds);
+    }
+
+    void setArraySearchTime(long long timeInMicroseconds)
+    {
+        arrayMetrics.processingTime = chrono::microseconds(timeInMicroseconds);
+    }
+
+    void setArraySortTime(long long timeInMicroseconds)
+    {
+        arrayMetrics.sortingTime = chrono::microseconds(timeInMicroseconds);
+    }
+
 private:
     // Helper methods
-    void displayInitialComparison();
-    void processArrayStructure();
-    void processLinkedListStructureSilent();
-    void displayCreationComparison();
-    void displayFinalSummary();
+
     void calculateMemoryUsage();
-    void displayPerformanceInsights();
-    
 };

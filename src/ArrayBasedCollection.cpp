@@ -31,7 +31,8 @@ void ArrayBasedCollection::printGroupedByPaymentChannel(Transaction arr[], int n
     int totalResults = 0;
     chrono::milliseconds totalSearchTime = chrono::milliseconds::zero();
     chrono::milliseconds totalAmountSortTime = chrono::milliseconds::zero();
-    
+    cout << "\n========================================" << endl;
+    cout << "Grouped Transactions by Payment Channel" << endl;
     while (i < numTransactions)
     {
         string currentChannel = arr[i].getPaymentChannel();
@@ -87,7 +88,94 @@ void ArrayBasedCollection::printGroupedByPaymentChannel(Transaction arr[], int n
     // Store total timing metrics
     searchTime = totalSearchTime;
     sortTime = channelSortTime + totalAmountSortTime;
+
+      // Add clear and short performance summary
+    cout << "\n========================================" << endl;
+    cout << "ARRAY PERFORMANCE SUMMARY" << endl;
+    cout << "========================================" << endl;
+    cout << "Processing Time:" << endl;
+    cout << "  Sorting: " << (channelSortTime + totalAmountSortTime).count() << " ms" << endl;
+    cout << "  Searching: " << totalSearchTime.count() << " ms" << endl;
+    cout << "  Total: " << (channelSortTime + totalAmountSortTime + totalSearchTime).count() << " ms" << endl;
+    
+    cout << "Memory Usage:" << endl;
+    double memoryMB = (numTransactions * sizeof(Transaction)) / (1024.0 * 1024.0);
+    cout << "   Dataset: " << memoryMB << " MB (" << numTransactions << " transactions)" << endl;
+    cout << "   Results Displayed: " << totalResults << " transactions" << endl;
+    cout << "========================================" << endl;
+    
 }
+
+// Process the array structure silently without printing
+void ArrayBasedCollection::processSilently(Transaction arr[], int numTransactions, string &searchKey)
+{
+    if (numTransactions == 0 || arr == nullptr) {
+        return;
+    }
+
+    // Sort by payment channel first with timing
+    auto channelSortStart = chrono::high_resolution_clock::now();
+    mergeSortByPaymentChannel(arr, 0, numTransactions - 1);
+    auto channelSortEnd = chrono::high_resolution_clock::now();
+    auto channelSortTime = chrono::duration_cast<chrono::milliseconds>(channelSortEnd - channelSortStart);
+
+    chrono::milliseconds totalSearchTime = chrono::milliseconds::zero();
+    chrono::milliseconds totalAmountSortTime = chrono::milliseconds::zero();
+    
+    int currentIndex = 0;
+    
+    while (currentIndex < numTransactions) {
+        string currentChannel = transactions[currentIndex].getPaymentChannel();
+        
+        // Find the range of transactions for this channel
+        int channelStart = currentIndex;
+        int channelEnd = currentIndex;
+        while (channelEnd < numTransactions && 
+               transactions[channelEnd].getPaymentChannel() == currentChannel) {
+            channelEnd++;
+        }
+        int channelSize = channelEnd - channelStart;
+
+        // Search for matching transactions with timing (SILENTLY)
+        auto searchStart = chrono::high_resolution_clock::now();
+        
+        // Create temporary array for matching transactions
+        Transaction* matchingTransactions = new Transaction[channelSize];
+        int matchingCount = 0;
+        
+        // Search in the channel range
+        for (int i = channelStart; i < channelEnd; i++) {
+            if (transactions[i].getTransactionType() == searchKey) {
+                matchingTransactions[matchingCount] = transactions[i];
+                matchingCount++;
+            }
+        }
+        
+        auto searchEnd = chrono::high_resolution_clock::now();
+        totalSearchTime += chrono::duration_cast<chrono::milliseconds>(searchEnd - searchStart);
+
+        if (matchingCount > 0) {
+            // Sort the matching group with timing (SILENTLY)
+            auto amountSortStart = chrono::high_resolution_clock::now();
+            mergeSortByAmountThenLocation(matchingTransactions, 0, matchingCount - 1);
+            auto amountSortEnd = chrono::high_resolution_clock::now();
+            totalAmountSortTime += chrono::duration_cast<chrono::milliseconds>(amountSortEnd - amountSortStart);
+
+            // NO PRINTING - just process silently
+        }
+
+        // Clean up temporary array
+        delete[] matchingTransactions;
+        
+        // Move to next channel
+        currentIndex = channelEnd;
+    }
+
+    // Store total timing metrics
+    searchTime = totalSearchTime;
+    sortTime = channelSortTime + totalAmountSortTime;
+}
+// Helper function to translate internal type names to user-friendly names
 
 int ArrayBasedCollection::searchbyTransactionType(Transaction arr[], int start, int end, string &searchKey, Transaction *group)
 {

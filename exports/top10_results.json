@@ -1,5 +1,15 @@
 [
     {
+        "amount": 343.78,
+        "isFraud": false,
+        "location": "Tokyo",
+        "paymentChannel": "card",
+        "receiverAccount": "ACC388389",
+        "senderAccount": "ACC877572",
+        "transactionID": "T100000",
+        "transactionType": "withdrawal"
+    },
+    {
         "amount": 419.65,
         "isFraud": false,
         "location": "Toronto",
@@ -8,6 +18,26 @@
         "senderAccount": "ACC895667",
         "transactionID": "T100001",
         "transactionType": "withdrawal"
+    },
+    {
+        "amount": 2773.86,
+        "isFraud": false,
+        "location": "London",
+        "paymentChannel": "card",
+        "receiverAccount": "ACC377370",
+        "senderAccount": "ACC733052",
+        "transactionID": "T100002",
+        "transactionType": "deposit"
+    },
+    {
+        "amount": 1666.22,
+        "isFraud": false,
+        "location": "Sydney",
+        "paymentChannel": "wire_transfer",
+        "receiverAccount": "ACC344098",
+        "senderAccount": "ACC996865",
+        "transactionID": "T100003",
+        "transactionType": "deposit"
     },
     {
         "amount": 24.43,
@@ -20,6 +50,26 @@
         "transactionType": "transfer"
     },
     {
+        "amount": 58.77,
+        "isFraud": false,
+        "location": "Berlin",
+        "paymentChannel": "UPI",
+        "receiverAccount": "ACC249811",
+        "senderAccount": "ACC581141",
+        "transactionID": "T100005",
+        "transactionType": "transfer"
+    },
+    {
+        "amount": 59.51,
+        "isFraud": false,
+        "location": "Dubai",
+        "paymentChannel": "UPI",
+        "receiverAccount": "ACC267753",
+        "senderAccount": "ACC757924",
+        "transactionID": "T100006",
+        "transactionType": "payment"
+    },
+    {
         "amount": 29.79,
         "isFraud": false,
         "location": "London",
@@ -30,73 +80,23 @@
         "transactionType": "transfer"
     },
     {
-        "amount": 14.18,
+        "amount": 16.0,
         "isFraud": false,
-        "location": "Tokyo",
-        "paymentChannel": "ACH",
-        "receiverAccount": "ACC300896",
-        "senderAccount": "ACC360735",
-        "transactionID": "T100012",
+        "location": "New York",
+        "paymentChannel": "card",
+        "receiverAccount": "ACC945964",
+        "senderAccount": "ACC972064",
+        "transactionID": "T100008",
+        "transactionType": "transfer"
+    },
+    {
+        "amount": 203.05,
+        "isFraud": false,
+        "location": "Dubai",
+        "paymentChannel": "UPI",
+        "receiverAccount": "ACC322086",
+        "senderAccount": "ACC543692",
+        "transactionID": "T100009",
         "transactionType": "withdrawal"
-    },
-    {
-        "amount": 1433.12,
-        "isFraud": false,
-        "location": "Tokyo",
-        "paymentChannel": "ACH",
-        "receiverAccount": "ACC672092",
-        "senderAccount": "ACC256294",
-        "transactionID": "T100019",
-        "transactionType": "deposit"
-    },
-    {
-        "amount": 311.77,
-        "isFraud": false,
-        "location": "Toronto",
-        "paymentChannel": "ACH",
-        "receiverAccount": "ACC333238",
-        "senderAccount": "ACC593554",
-        "transactionID": "T100021",
-        "transactionType": "withdrawal"
-    },
-    {
-        "amount": 10.49,
-        "isFraud": false,
-        "location": "Singapore",
-        "paymentChannel": "ACH",
-        "receiverAccount": "ACC786508",
-        "senderAccount": "ACC736130",
-        "transactionID": "T100025",
-        "transactionType": "transfer"
-    },
-    {
-        "amount": 56.98,
-        "isFraud": false,
-        "location": "Tokyo",
-        "paymentChannel": "ACH",
-        "receiverAccount": "ACC452161",
-        "senderAccount": "ACC384913",
-        "transactionID": "T100029",
-        "transactionType": "transfer"
-    },
-    {
-        "amount": 12.27,
-        "isFraud": false,
-        "location": "Berlin",
-        "paymentChannel": "ACH",
-        "receiverAccount": "ACC859782",
-        "senderAccount": "ACC389930",
-        "transactionID": "T100040",
-        "transactionType": "transfer"
-    },
-    {
-        "amount": 28.53,
-        "isFraud": false,
-        "location": "Singapore",
-        "paymentChannel": "ACH",
-        "receiverAccount": "ACC398151",
-        "senderAccount": "ACC701949",
-        "transactionID": "T100041",
-        "transactionType": "payment"
     }
 ]

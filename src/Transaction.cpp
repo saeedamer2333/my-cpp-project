@@ -73,6 +73,23 @@ bool Transaction::getIsFraud() const {
 
 
 // Static utility method that works with passed arrays
+string Transaction::formatTransactionTypeForDisplay(const string& internalType) {
+    if (internalType == "withdrawal") {
+        return "withdrawal";
+    }
+    if (internalType == "deposit") {
+        return "deposit";
+    }
+    if (internalType == "transfer") {
+        return "transfer";
+    }
+    if (internalType == "payment") {
+        return "payment";
+    }
+    // As a fallback, if a new unknown type appears, just return it as is.
+    return internalType; 
+}
+
 void Transaction::showUniqueTransactionTypes(Transaction* transactions, int count) {
     if (transactions == nullptr || count <= 0) {
         cout << "No transactions available.\n";
@@ -83,6 +100,8 @@ void Transaction::showUniqueTransactionTypes(Transaction* transactions, int coun
     string uniqueTypes[50];
     int uniqueCount = 0;
 
+    // This part of the logic does not need to change.
+    // It correctly finds all unique internal types.
     for (int i = 0; i < count; i++) {
         string type = transactions[i].getTransactionType();
         
@@ -103,7 +122,12 @@ void Transaction::showUniqueTransactionTypes(Transaction* transactions, int coun
     }
 
     cout << "\nAvailable Transaction Types:\n";
+
+    // *** MODIFICATION IS HERE ***
+    // Use the helper function to print the formatted names.
     for (int i = 0; i < uniqueCount; i++) {
-        cout << (i + 1) << ". " << uniqueTypes[i] << endl;
-    }
+        cout << (i + 1) << ". " << formatTransactionTypeForDisplay(uniqueTypes[i]) << endl;
+}
+
+
 }

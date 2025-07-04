@@ -24,6 +24,9 @@ private:
     Transaction *transactions = nullptr;
     std::string filePath;
     int pageCounter = 0;
+    ifstream fileStream; // For streaming
+    bool isStreamMode = false;
+    long long totalProcessed = 0;
 
     // Helper methods for cleaner code and robust error handling
     bool expandCapacity(int &capacity);
@@ -40,7 +43,12 @@ public:
     ~CSVParser();
     void setFilePath(const std::string &path);
     bool loadNextPage();
-    int getNumTransactions() ;
-    Transaction *getTransactions()  ;
+    int getNumTransactions();
+    Transaction *getTransactions();
 
+    // New streaming methods for low memory usage
+    bool initializeStreaming();
+    bool getNextTransaction(Transaction &transaction);
+    void closeStream();
+    long long getTotalProcessed() const;
 };
